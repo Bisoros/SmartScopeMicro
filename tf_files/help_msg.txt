@@ -1,0 +1,8 @@
+Key bindings:
+
+Space - Scan
+Esc - Exit
+S - Save last scan
+C - Clear screen
+Z - Zoom
+? - Help menu
