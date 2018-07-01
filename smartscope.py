@@ -1,4 +1,5 @@
 from scripts.label_image import label_img
+from scripts.instatrain import weight_names
 import numpy as np
 import cv2, os, shutil, imutils
 from datetime import datetime
@@ -11,19 +12,19 @@ from tkinter import messagebox
 # | SET UP |
 # ----------
 
-# for camera
-cap = cv2.VideoCapture(1)
+# camera
+cap = cv2.VideoCapture(0)
 #cap.set(3, 1920)
 #cap.set(4, 1080)
 cap.set(5, 60)
 
-# for display
+# display
 cv2.namedWindow('SmartScope', cv2.WND_PROP_FULLSCREEN)
 cv2.setWindowProperty('SmartScope', cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
 font = cv2.FONT_HERSHEY_SIMPLEX
 colour = (255, 64, 16) #BGR
 
-# for tkinter
+# tkinter
 root = tk.Tk()
 root.withdraw()
 
@@ -32,17 +33,23 @@ img_path = 'tf_files/img.jpg'
 last_path = 'tf_files/last.jpg'
 save_path = 'history/'
 
-# other
-detected = None
-msg = None
-confidence = 0
-saved = True
-esc = 27
-zoomed = False
-help_msg = open('tf_files/help_msg.txt', 'r').read()
-abspath = os.path.abspath
+# weights
+weights = weight_names()
+windex = 0
 
-# make date format file friendly
+
+# other
+esc = 27
+confidence = 0
+detected = None
+saved = True
+zoomed = False
+abspath = os.path.abspath
+msg = 'Press Space to scan or ? for help'
+with open('tf_files/help_msg.txt', 'r') as f:
+    help_msg = f.read()
+
+# make date format filename friendly
 def str_date():
     return str(datetime.now()).replace(' ', '_').replace('.', '_').replace(':', '-')
 
@@ -57,7 +64,7 @@ def write_img():
     print_results()
     cv2.imwrite(last_path, frame)
 
-# zoom function from github.com/CJoseFlores/python-OpenCV-Zoom/blob/master/ZoomTest.py
+# zoom routine from github.com/CJoseFlores/python-OpenCV-Zoom/blob/master/ZoomTest.py
 def zoom(cv2Object, zoomSize = 2):
     cv2Object = imutils.resize(cv2Object, width = (zoomSize * cv2Object.shape[1]))
     center = (cv2Object.shape[0] // 2, cv2Object.shape[1] // 2)
@@ -71,8 +78,6 @@ def zoom(cv2Object, zoomSize = 2):
 # | MAIN LOOP |
 # -------------
 
-messagebox.showinfo('Help', help_msg)
-
 while (True):
     # capture frame-by-frame
     ret, frame = cap.read()
@@ -83,7 +88,7 @@ while (True):
         break
     elif key == ord(' '):
         cv2.imwrite(img_path, frame)
-        detected, confidence = label_img()
+        detected, confidence = label_img(weights[windex])
         write_img()
         saved = False
     elif key == ord('s'):
@@ -92,7 +97,8 @@ while (True):
             shutil.move(abspath(last_path), abspath(save_path + detected + '_' + str_date() + '.jpg'))
             msg = 'Image saved'
         else:
-            msg = 'Image does not exist or already saved'
+            msg = 'Image already saved or does not exist'
+        detected = None
     elif key == ord('/') or key == ord('?'):
          messagebox.showinfo('Help', help_msg)
     elif key == ord('c'):
@@ -100,6 +106,10 @@ while (True):
         msg = None
     elif key == ord('z'):
         zoomed = not zoomed
+    elif key == ord('<') or key == ord(','):
+        windex = windex - 1 if windex > 0 else len(weights) - 1
+    elif key == ord('>') or key == ord('.'):
+        windex = windex + 1 if windex < len(weights) - 1 else 0
     
     # show text on frame
     if zoomed:
