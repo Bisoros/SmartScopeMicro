@@ -1,0 +1,8 @@
+Key bindings:
+
+Esc - Exit
+T - Toggle trajectory highlight
+R - Toggle recording
+S - Screenshot
+C - Clear screen
+? - Help menu

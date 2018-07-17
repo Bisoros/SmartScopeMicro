@@ -1,10 +1,10 @@
-from scripts.label_image import label_img
-from scripts.instatrain import weight_names
-import numpy as np
 import cv2, os, shutil, imutils
-from datetime import datetime
+import numpy as np
 import tkinter as tk
 from tkinter import messagebox
+from datetime import datetime
+from scripts.label_image import label_img
+from scripts.instatrain import weight_names
 
 
 
@@ -13,7 +13,7 @@ from tkinter import messagebox
 # ----------
 
 # camera
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(1)
 #cap.set(3, 1920)
 #cap.set(4, 1080)
 cap.set(5, 60)
@@ -40,7 +40,7 @@ windex = 0
 
 # other
 esc = 27
-confidence = 0
+confidence = None
 detected = None
 saved = True
 zoomed = False
@@ -59,6 +59,10 @@ def print_results(string = None):
         string = detected + ' detected - confidence: ' + str('%.2f' % (confidence * 100)) + '%'
     cv2.putText(frame, string, (25, 420), font, 0.75, colour, 1, cv2.LINE_AA)
 
+# returns current weights
+def crt_weights():
+    confidence = None
+    return 'Loaded weights: ' + weights[windex]
 # save last scanned image
 def write_img():
     print_results()
@@ -81,16 +85,18 @@ def zoom(cv2Object, zoomSize = 2):
 while (True):
     # capture frame-by-frame
     ret, frame = cap.read()
-    
+
     # processing user input
     key = cv2.waitKey(1) & 0xFF
     if key == esc:
         break
+
     elif key == ord(' '):
         cv2.imwrite(img_path, frame)
         detected, confidence = label_img(weights[windex])
         write_img()
         saved = False
+
     elif key == ord('s'):
         if saved == False:
             saved = True
@@ -98,26 +104,32 @@ while (True):
             msg = 'Image saved'
         else:
             msg = 'Image already saved or does not exist'
-        detected = None
+        confidence = None
+
     elif key == ord('/') or key == ord('?'):
          messagebox.showinfo('Help', help_msg)
+
     elif key == ord('c'):
-        detected = None
+        confidence = None
         msg = None
+
     elif key == ord('z'):
         zoomed = not zoomed
+
     elif key == ord('<') or key == ord(','):
         windex = windex - 1 if windex > 0 else len(weights) - 1
+        msg = crt_weights()
     elif key == ord('>') or key == ord('.'):
         windex = windex + 1 if windex < len(weights) - 1 else 0
-    
+        msg = crt_weights()
+
     # show text on frame
     if zoomed:
         frame = zoom(frame)
 
     cv2.putText(frame, 'SmartScope', (0, 25), font, 1, colour, 3, cv2.LINE_AA)
 
-    if (detected != None):
+    if confidence != None:
         print_results()
     elif msg != None:
         print_results(msg)

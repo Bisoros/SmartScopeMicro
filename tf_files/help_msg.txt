@@ -5,4 +5,6 @@ Esc - Exit
 S - Save last scan
 C - Clear screen
 Z - Zoom
+> or < - Change weights
 ? - Help menu
+
