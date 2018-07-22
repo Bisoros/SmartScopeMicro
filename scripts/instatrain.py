@@ -9,10 +9,10 @@ def instatrain(name, classes):
 
     # download image data for each class
     for item in classes:
-        os.system('python google_images_download.py -o=tf_files/training_data -f=jpg -k=' + str(item))
+        os.system('python scripts/google_images_download.py -o=tf_files/training_data -f=jpg -k=' + str(item))
 
     # train the cnn
-    os.system('python -m retrain --bottleneck_dir=tf_files/bottlenecks  --image_dir=tf_files/training_data  --output_graph=tf_files/'
+    os.system('python -m scripts/retrain --bottleneck_dir=tf_files/bottlenecks  --image_dir=tf_files/training_data  --output_graph=tf_files/'
               + name + '.pb --output_labels=tf_files/' + name + '.txt')
 
     # delete data

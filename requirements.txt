@@ -1,8 +1,12 @@
 numpy
-
 tensorflow
-
 opencv-python
-
 selenium
 imutils
+docutils
+pygments
+pypiwin32
+kivy.deps.sdl2
+kivy.deps.glew
+kivy
+#  numpy, selenium, setuptools, six, protobuf, grpcio, gast, astor, termcolor, absl-py, werkzeug, markdown, tensorboard, tensorflow, imutils, opencv-python, docutils, pygments, pywin32, pypiwin32, kivy.deps.sdl2, kivy.deps.glew, kivy.deps.gstreamer, idna, urllib3, certifi, chardet, requests, Kivy-Garden, kivy

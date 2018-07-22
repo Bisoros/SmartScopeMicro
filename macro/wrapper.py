@@ -40,6 +40,7 @@ recording = False
 esc = 27
 msg = None
 q = deque()
+save_path = 'saved/macro/'
 fourcc = cv2.VideoWriter_fourcc(*'XVID')
 with open('help_msg.txt', 'r') as f:
     help_msg = f.read()
@@ -69,7 +70,7 @@ while(True):
         break
 
     elif key == ord('s'):
-        copyfile('img.jpg', abspath('saved/' + str_date() + '.jpg'))
+        copyfile('img.jpg', abspath(save_path + str_date() + '.jpg'))
         msg = 'Image saved'
 
     elif key == ord('/') or key == ord('?'):
@@ -87,7 +88,7 @@ while(True):
             out.release()
             msg = 'Saved recording'
         else:
-            out = cv2.VideoWriter('saved/' + str_date() + '.avi', fourcc, 20, (640,480))
+            out = cv2.VideoWriter(save_path + str_date() + '.avi', fourcc, 20, (640,480))
             msg = 'Recording'
         recording = not recording
 
