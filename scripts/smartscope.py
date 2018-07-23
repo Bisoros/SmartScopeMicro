@@ -3,8 +3,8 @@ import numpy as np
 import tkinter as tk
 from tkinter import messagebox
 from datetime import datetime
-from label_image import label_img
-from instatrain import weight_names
+from .label_image import label_img
+from .instatrain import weight_names
 
 def main():
 

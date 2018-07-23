@@ -13,12 +13,13 @@ def format_filename(s):
         messagebox.showerror('Invalid File Name', 'The file name introduced is invalid')
         exit()
 
-# name for weights dialog
+# weights name dialog
 master = tk.Tk()
+master.resizable(False, False)
 master.title('Enter a name for the weights:')
 
-e = tk.Entry(master, width = 64)
-e.pack()
+e = tk.Entry(master, width = 50)
+e.pack(side = tk.LEFT)
 e.focus_set()
 
 def callback():
@@ -27,7 +28,7 @@ def callback():
     master.destroy()
 
 b = tk.Button(master, text = 'OK', command = callback)
-b.pack()
+b.pack(side = tk.LEFT)
 
 tk.mainloop()
 
