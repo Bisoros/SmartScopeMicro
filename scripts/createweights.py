@@ -18,6 +18,7 @@ master = tk.Tk()
 master.resizable(False, False)
 master.title('Enter a name for the weights:')
 
+# entry field
 e = tk.Entry(master, width = 50)
 e.pack(side = tk.LEFT)
 e.focus_set()
@@ -27,6 +28,7 @@ def callback():
     name = format_filename(e.get())
     master.destroy()
 
+# ok button
 b = tk.Button(master, text = 'OK', command = callback)
 b.pack(side = tk.LEFT)
 
@@ -51,6 +53,7 @@ if file_path == '':
     messagebox.showerror('Directory Error', 'No directory selected')
     exit()
 
-os.system('python -m retrain --bottleneck_dir=tf_files/bottlenecks  --image_dir='
+# train the neural network
+os.system('python3 -m retrain --bottleneck_dir=tf_files/bottlenecks  --image_dir='
           + file_path + '  --output_graph=tf_files/' + name + '.pb --output_labels=tf_files/'
           + name + '.txt')

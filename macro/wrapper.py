@@ -13,7 +13,7 @@ from os.path import abspath
 # ----------
 
 # camera
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(1)
 #cap.set(3, 1920)
 #cap.set(4, 1080)
 cap.set(5, 60)
@@ -42,7 +42,7 @@ msg = None
 q = deque()
 save_path = 'saved/macro/'
 fourcc = cv2.VideoWriter_fourcc(*'XVID')
-with open('help_msg.txt', 'r') as f:
+with open('macro/help_msg.txt', 'r') as f:
     help_msg = f.read()
 
 def rd (x):
@@ -70,7 +70,7 @@ while(True):
         break
 
     elif key == ord('s'):
-        copyfile('img.jpg', abspath(save_path + str_date() + '.jpg'))
+        copyfile('macro/img.jpg', abspath(save_path + str_date() + '.jpg'))
         msg = 'Image saved'
 
     elif key == ord('/') or key == ord('?'):
@@ -95,7 +95,7 @@ while(True):
     elif key == ord('c'):
         msg = None
 
-    cv2.imwrite('img.jpg', frame)
+    cv2.imwrite('macro/img.jpg', frame)
     """
     # computing  output
     results = dn.detect(net, meta, path + 'python/img.jpg')
@@ -127,7 +127,7 @@ while(True):
         print_msg(msg)
     cv2.putText(frame,'SmartScope', (0, 25), fontface, 1, colour, 3, cv2.LINE_AA)
     cv2.imshow('SmartScope', frame)
-    cv2.imwrite('img.jpg', frame)
+    cv2.imwrite('macro/img.jpg', frame)
     print ('\n')
     time.sleep(0.01)
 
@@ -139,7 +139,7 @@ while(True):
 
 # remove unnecessary files
 try:
-    os.remove('img.jpg')
+    os.remove('macro/img.jpg')
 except:
     pass
 

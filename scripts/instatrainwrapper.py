@@ -66,15 +66,18 @@ name_entry.focus_set()
 
 add_label('Enter classes')
 
+# append add annother classbutton
 add_entry_button = tk.Button(master, text = 'Add another class', command = add_entry)
 add_entry_button.pack()
 
 for i in range(2):
     add_entry()
 
+# append OK button
 ok = tk.Button(master, text = 'OK', command = ok_action)
 ok.pack(side = tk.BOTTOM)
 
+# append delete last entry button
 remove_entry_button = tk.Button(master, text = 'Delete entry', command = delete_entry)
 remove_entry_button.pack(side = tk.BOTTOM)
 

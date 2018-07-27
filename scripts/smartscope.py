@@ -15,7 +15,7 @@ def main():
     # ----------
 
     # camera
-    cap = cv2.VideoCapture(-1)
+    cap = cv2.VideoCapture(1)
     #cap.set(3, 1920)
     #cap.set(4, 1080)
     cap.set(5, 60)
@@ -87,7 +87,7 @@ def main():
     while (True):
         # capture frame-by-frame
         ret, frame = cap.read()
-        cv2.imshow('SmartScope', frame)
+        #cv2.imshow('SmartScope', frame)
         # processing user input
         key = cv2.waitKey(1) & 0xFF
         if key == esc:

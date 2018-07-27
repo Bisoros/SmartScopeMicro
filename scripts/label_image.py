@@ -41,10 +41,8 @@ def load_labels(label_file):
         label.append(l.rstrip())
     return label
 
-def label_img(weights = None):
+def label_img(weights = 'original'):
     # setting vars
-    if weights == None:
-        weights = 'original'
     file_name = 'tf_files/img.jpg'
     model_file = 'tf_files/' + weights + '.pb'
     label_file = 'tf_files/' + weights + '.txt'
@@ -72,6 +70,7 @@ def label_img(weights = None):
         results = sess.run(output_operation.outputs[0],
                         {input_operation.outputs[0]: t})
 
+    # process and return results
     results = np.squeeze(results)
 
     top_k = results.argsort()[-5:][::-1]
@@ -80,5 +79,3 @@ def label_img(weights = None):
     max = top_k[0]
 
     return labels[max], results[max]
-
-
