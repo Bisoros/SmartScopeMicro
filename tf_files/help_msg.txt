@@ -1,4 +1,4 @@
-Key bindings:
+Keybinds:
 
 Space - Scan
 Esc - Exit

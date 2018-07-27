@@ -1,4 +1,4 @@
-Key bindings:
+Keybinds:
 
 Esc - Exit
 T - Toggle trajectory highlight

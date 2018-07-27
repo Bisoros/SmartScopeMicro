@@ -87,7 +87,7 @@ def main():
     while (True):
         # capture frame-by-frame
         ret, frame = cap.read()
-        #cv2.imshow('SmartScope', frame)
+        
         # processing user input
         key = cv2.waitKey(1) & 0xFF
         if key == esc:
