@@ -1,5 +1,6 @@
 scripts/__pycache__/
 __pycache__/
+tf_files/training_data/
 *.py[cod]
 *.pb
 tf_files/bottlenecks/

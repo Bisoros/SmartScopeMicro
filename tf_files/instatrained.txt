@@ -1,0 +1,7 @@
+display
+fabric
+paper
+plant
+rock
+unicellular
+wood

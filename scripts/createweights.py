@@ -54,6 +54,6 @@ if file_path == '':
     exit()
 
 # train the neural network
-os.system('python3 -m retrain --bottleneck_dir=tf_files/bottlenecks  --image_dir='
+os.system('python3 scripts/retrain.py --bottleneck_dir=tf_files/bottlenecks  --image_dir='
           + file_path + '  --output_graph=tf_files/' + name + '.pb --output_labels=tf_files/'
           + name + '.txt')
