@@ -1,0 +1,28 @@
+# use '#' for comments
+
+# use python-like nesting, but without colon
+# write a command on a line
+# you may use as much white space as you like
+# available commands:
+
+# available in both loop and scan
+# load('weights name') - loads the weights between parentheses
+# wait(x) - pauses routine for x seconds; default in loop for 60 seconds
+
+# available just in loop
+# scan - runs detection and scan ROUTINES
+
+# available just in scan
+# if 'class' detected - checks if class was detected during scan
+# tweet - plays a sound
+
+tweet
+wait()
+loop:
+    # routine that loops until exit
+gay
+if "gayness" detected
+tweet
+wait(4325)
+scan:
+    # runs when called in the loop routine and automatically runs the detection routine
