@@ -69,3 +69,9 @@ SmartScope Micro este un microscop bazat pe inteligență artificială ce clasif
 - Procesesor: >= 1.2 GHz
 - RAM: >= 1 GB
 SmartScope Macro necesită și un GPU CUDA.
+
+## Cod preluat din surse deschise
+- funcția zoom din scripts/smartscope.py - http://github.com/CJoseFlores/python-OpenCV-Zoom/blob/master/ZoomTest.py (modificat)
+- scriptul scripts/label_image.py - http://github.com/googlecodelabs/tensorflow-for-poets-2/blob/master/scripts/label_image.py (modificat)
+- scriptul scripts/retrain.py - http://github.com/googlecodelabs/tensorflow-for-poets-2/blob/master/scripts/retrain.py
+- scriptul scripts/google_images_download.py - https://github.com/hardikvasa/google-images-download/blob/master/google_images_download/google_images_download.py
