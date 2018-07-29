@@ -44,7 +44,7 @@ def dialog():
     create_button = tk.Button(master, image = create_sprite, command = create_weights)
     instatrain_sprite = tk.PhotoImage(file = 'sprites/instatrain.png')
     instatrain_button = tk.Button(master, image = instatrain_sprite, command = instatrain)
-    macro_sprite = tk.PhotoImage(file = 'sprites/blank.png')
+    macro_sprite = tk.PhotoImage(file = 'sprites/macro.png')
     macro_button = tk.Button(master, image = macro_sprite, command = macro)
 
     launch_button.pack()
