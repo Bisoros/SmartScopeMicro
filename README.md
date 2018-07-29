@@ -1,4 +1,4 @@
-# SmartScopeMicro
+# SmartScope
 ![Word cloud](sprites/wordcloud.png)
 
 ## Instalare SmartScope Micro:
