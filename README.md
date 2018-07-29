@@ -68,6 +68,7 @@ SmartScope Micro este un microscop bazat pe inteligență artificială ce clasif
 - Sistem de operare: Linux, Windows sau Mac OS X
 - Procesesor: >= 1.2 GHz
 - RAM: >= 1 GB
+
 SmartScope Macro necesită și un GPU CUDA.
 
 ## Cod preluat din surse deschise
