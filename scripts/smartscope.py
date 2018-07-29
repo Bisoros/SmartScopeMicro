@@ -39,7 +39,6 @@ def main():
     weights = weight_names()
     windex = 0
 
-
     # other
     esc = 27
     confidence = None
@@ -63,9 +62,8 @@ def main():
 
     # returns current weights
     def crt_weights():
-        global confidence
-        confidence = None
         return 'Loaded weights: ' + weights[windex]
+
     # save last scanned image
     def write_img():
         print_results()
@@ -122,9 +120,11 @@ def main():
         elif key == ord('<') or key == ord(','):
             windex = windex - 1 if windex > 0 else len(weights) - 1
             msg = crt_weights()
+            confidence = None
         elif key == ord('>') or key == ord('.'):
             windex = windex + 1 if windex < len(weights) - 1 else 0
             msg = crt_weights()
+            confidence = None
 
         # show text on frame
         if zoomed:

@@ -1,0 +1,6 @@
+coal
+granite
+lapis lazuli
+malachite
+marble
+obsidian

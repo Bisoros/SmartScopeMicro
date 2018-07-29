@@ -1,5 +1,5 @@
 import cv2, time
-#import darknet as dn
+import darknet as dn
 import tkinter as tk
 from tkinter import messagebox
 from collections import deque
@@ -23,13 +23,13 @@ cv2.namedWindow('SmartScope', cv2.WND_PROP_FULLSCREEN)
 cv2.setWindowProperty('SmartScope', cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
 fontface = cv2.FONT_HERSHEY_SIMPLEX
 colour = (128, 200, 255) #BGR
-"""
+
 # darknet
 path = '/path/to/darknet/'
 net = dn.load_net(path + 'cfg/yolov3.cfg', path + 'yolov3.weights', 0)
 meta = dn.load_meta(path + 'cfg/coco.data')
 dn.set_gpu(0)
-"""
+
 # tkinter
 root = tk.Tk()
 root.withdraw()
@@ -96,7 +96,7 @@ while(True):
         msg = None
 
     cv2.imwrite('macro/img.jpg', frame)
-    """
+
     # computing  output
     results = dn.detect(net, meta, path + 'python/img.jpg')
 
@@ -118,19 +118,19 @@ while(True):
     if show_trajectory:
         for point in q:
             cv2.circle(frame,point, 2, (0,0,255), -1)
-    """
 
     if recording:
         out.write(frame)
 
+    # operations om frame
     if msg != None:
         print_msg(msg)
     cv2.putText(frame,'SmartScope', (0, 25), fontface, 1, colour, 3, cv2.LINE_AA)
     cv2.imshow('SmartScope', frame)
     cv2.imwrite('macro/img.jpg', frame)
+
     print ('\n')
     time.sleep(0.01)
-
 
 
 # -----------------
