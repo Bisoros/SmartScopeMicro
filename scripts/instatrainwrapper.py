@@ -43,7 +43,7 @@ def ok_action():
     name = format_filename(name_entry.get())
     for entry in entries:
         if entry.get():
-            classes.append(entry.get())
+            classes.append(entry.get().replace('"', ''))
     master.destroy()
     if len(classes) >= 2:
         instatrain(name, tuple(classes))

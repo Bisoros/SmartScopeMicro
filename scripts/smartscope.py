@@ -63,6 +63,7 @@ def main():
 
     # returns current weights
     def crt_weights():
+        global confidence
         confidence = None
         return 'Loaded weights: ' + weights[windex]
     # save last scanned image
@@ -87,7 +88,7 @@ def main():
     while (True):
         # capture frame-by-frame
         ret, frame = cap.read()
-        
+
         # processing user input
         key = cv2.waitKey(1) & 0xFF
         if key == esc:
@@ -156,6 +157,7 @@ def main():
     # when everything done, release the capture
     cap.release()
     cv2.destroyAllWindows()
+    exit()
 
 if  __name__ == '__main__':
     main()

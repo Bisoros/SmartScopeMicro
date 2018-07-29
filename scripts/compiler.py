@@ -50,6 +50,6 @@ for line in lines:
         if check_valid(line):
             print (line)
         else:
-            print ('gay: ' + line)
+            print ('not ok: ' + line)
         #if line == 'loop:':
         #    printf('def loop:')
