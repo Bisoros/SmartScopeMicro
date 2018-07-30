@@ -1,7 +1,7 @@
 # SmartScope
 ![Word cloud](sprites/wordcloud.png)
 
-## Instalare SmartScope Micro:
+## Instalare SmartScope Micro
 ```
 git clone https://github.com/Bisoros/SmartScopeMicro
 pip install -r requirements.txt
